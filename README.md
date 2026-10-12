@@ -66,7 +66,6 @@ Tested with OPA 1.4.2.
 benchmark/   the calculator and the Jev billing probe
 policy/      the OPA refund rule, six test cases and a test runner
 report/      the full benchmark report (PDF)
-social/      the posts that shipped with this release: LinkedIn, X and TikTok
 ```
 
 ## Method
