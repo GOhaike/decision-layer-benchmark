@@ -31,15 +31,24 @@ uv run python benchmark/jev_cost_model.py
 
 Every assumption sits in the scenario block at the top of the file: traffic, token counts, cache hit rate, output sizes. Change it to match your own traffic and run it again.
 
-## Confirm how Jev bills
+## How Jev bills, measured
 
-TypeSafe's docs say Jev reads the shared state once and answers every question against it. The API reference does not state the billing rule, so the calculator bills the state once per request and exposes `JEV_BILLS_STATE_PER_QUESTION` to switch it. If Jev billed per question, the Jev layer would cost $1,071 a month.
+TypeSafe's docs say Jev reads the shared state once and answers every question against it. The probe confirmed it on 12 October 2026:
 
-The probe settles it with two calls that cost well under a cent:
+| Questions | Input tokens |
+|---|---|
+| 1 | 2,011 |
+| 5 | 2,133 |
+
+Each extra question adds about 30 tokens, so the state is billed once per request. The calculator assumes 200 tokens per question, more than measured, so the $315 figure is conservative.
+
+Run the probe yourself with two calls that cost well under a cent:
 
 ```sh
-TYPESAFE_API_KEY=... uv run --with requests python benchmark/jev_billing_probe.py
+uv run --with requests python benchmark/jev_billing_probe.py
 ```
+
+It reads your key from `TYPESAFE_API_KEY`, or asks for it without showing it on screen.
 
 ## The policy rule
 

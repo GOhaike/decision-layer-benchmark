@@ -54,7 +54,7 @@ CACHE_HIT_RATE = 0.95       # share of static-prefix reads served from cache
 REPLY_SYSTEM_TOKENS = 1_500 # static part of the reply prompt (cacheable)
 REPLY_DYNAMIC_TOKENS = 2_500
 REPLY_OUTPUT_TOKENS = 600
-JEV_BILLS_STATE_PER_QUESTION = False  # confirm with jev_billing_probe.py
+JEV_BILLS_STATE_PER_QUESTION = False  # measured 12 Oct 2026: 2,011 tokens (1 question) vs 2,133 (5)
 # ------------------------------------------------------------------------------
 
 M = 1_000_000
